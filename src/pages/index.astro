@@ -2,6 +2,7 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Hero from "../components/Hero.astro";
 import HomeTimeline from "../components/react/HomeTimeline.jsx";
+import ShowMoreButton from "../components/react/ShowMoreButton.jsx";
 import { homeTimeline } from "../data/navigation.js";
 ---
 
@@ -19,6 +20,6 @@ import { homeTimeline } from "../data/navigation.js";
 
     <HomeTimeline items={homeTimeline} client:load />
 
-    <button class="show-more" type="button" data-show-more data-i18n="button.showMore">Show more</button>
+    <ShowMoreButton client:load />
   </section>
 </BaseLayout>

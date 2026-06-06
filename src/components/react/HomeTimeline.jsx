@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { Timeline } from "antd";
+import { ArrowRightOutlined } from "@ant-design/icons";
+import { Button, Card, Space, Tag, Timeline, Typography } from "antd";
+
+const { Paragraph, Text, Title } = Typography;
 
 function getStoredLanguage() {
   if (typeof window === "undefined") return "en";
@@ -24,25 +27,41 @@ export default function HomeTimeline({ items = [] }) {
     setLanguage(getStoredLanguage());
     document.addEventListener("site-language-change", syncLanguage);
     document.dispatchEvent(new CustomEvent("site-set-language", { detail: { lang: getStoredLanguage() } }));
+    window.setTimeout(() => {
+      const query = new URLSearchParams(window.location.search).get("q") || "";
+      document.dispatchEvent(new CustomEvent("site-search-query", { detail: { query } }));
+    }, 0);
 
     return () => document.removeEventListener("site-language-change", syncLanguage);
   }, []);
 
   const timelineItems = items.map((item) => ({
     className: `timeline-item${item.visible ? "" : " is-hidden"}`,
-    label: <time dateTime={item.date}>{formatDate(item.date, language)}</time>,
     children: (
-      <article data-search-text={`${item.title} ${item.description} ${item.meta} ${item.date}`}>
-        <p className="timeline-meta">
-          <time dateTime={item.date}>{formatDate(item.date, language)}</time>
-          <span aria-hidden="true"> / </span>
-          <span>{item.category}</span>
-        </p>
-        <a className="post-title" href={item.href} data-i18n={item.titleKey}>{item.title}</a>
-        <p data-i18n={item.descriptionKey}>{item.description}</p>
-      </article>
+      <Card
+        className="timeline-card"
+        size="small"
+        hoverable
+        data-search-text={`${item.title} ${item.description} ${item.meta} ${item.date}`}
+      >
+        <Space className="timeline-card-meta" size={8} wrap>
+          <Tag color="magenta">{item.category}</Tag>
+          <Text type="secondary">
+            <time dateTime={item.date}>{formatDate(item.date, language)}</time>
+          </Text>
+        </Space>
+        <Title className="timeline-card-title" level={3}>
+          <a href={item.href} data-i18n={item.titleKey}>{item.title}</a>
+        </Title>
+        <Paragraph className="timeline-card-description" data-i18n={item.descriptionKey}>
+          {item.description}
+        </Paragraph>
+        <Button className="timeline-card-link" href={item.href} type="link" icon={<ArrowRightOutlined />} iconPosition="end">
+          <span data-i18n="link.readMore">Read more</span>
+        </Button>
+      </Card>
     ),
   }));
 
-  return <Timeline className="timeline-list antd-home-timeline" mode="left" data-timeline-list items={timelineItems} />;
+  return <Timeline className="timeline-list antd-home-timeline" data-timeline-list items={timelineItems} />;
 }

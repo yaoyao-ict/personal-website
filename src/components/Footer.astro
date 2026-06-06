@@ -1,29 +1,19 @@
 ---
-import { navigation } from "../data/navigation.js";
-
-const footerLinks = navigation.flatMap((group) => group.links ?? [{ label: group.label, key: group.key, href: group.href }]);
+const footerLinks = [
+  { label: "Projects", key: "nav.projects", href: "/projects/" },
+  { label: "Writing", key: "nav.writing", href: "/writing/" },
+  { label: "About", key: "nav.about", href: "/about/" },
+  { label: "Contact", key: "nav.about.contact", href: "/contact/" },
+  { label: "GitHub", href: "https://github.com/yaoyao-ict" },
+];
 ---
 
 <footer class="site-footer">
   <a class="brand footer-brand" href="/">Yao<span class="spark">W</span>Yao</a>
-  <div class="footer-links">
-    <section>
-      <h2 data-i18n="footer.site">Site</h2>
-      {footerLinks.slice(0, 5).map((link) => (
-        <a href={link.href} data-i18n={link.key}>{link.label}</a>
-      ))}
-    </section>
-    <section>
-      <h2 data-i18n="footer.social">Social</h2>
-      <a href="https://github.com/yaoyao-ict">GitHub</a>
-      <a href="/contact/" data-i18n="nav.about.contact">Contact</a>
-      <a href="/writing/" data-i18n="nav.writing">Writing</a>
-    </section>
-    <section>
-      <h2 data-i18n="footer.next">Next</h2>
-      <a href="/writing/deployment/" data-i18n="nav.writing.deployment">Deployment Notes</a>
-      <a href="/about/#contact" data-i18n="nav.about.contact">Contact</a>
-    </section>
-  </div>
+  <nav class="footer-links" aria-label="Footer navigation">
+    {footerLinks.map((link) => (
+      <a href={link.href} data-i18n={link.key}>{link.label}</a>
+    ))}
+  </nav>
   <p class="copyright" data-i18n="footer.copyright">Copyright 2026 YaoYao. All rights reserved.</p>
 </footer>
