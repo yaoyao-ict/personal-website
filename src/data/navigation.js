@@ -2,27 +2,31 @@ export const navigation = [
   {
     label: "Projects",
     key: "nav.projects",
+    icon: "folder",
     links: [
-      { label: "All Projects", key: "nav.projects.all", href: "/projects/" },
-      { label: "Automation", key: "nav.projects.automation", href: "/projects/automation/" },
-      { label: "Data Dashboards", key: "nav.projects.data", href: "/projects/data/" },
+      { label: "All Projects", key: "nav.projects.all", href: "/projects/", icon: "grid" },
+      { label: "Automation", key: "nav.projects.automation", href: "/projects/automation/", icon: "zap" },
+      { label: "Data Dashboards", key: "nav.projects.data", href: "/projects/data/", icon: "chart" },
     ],
   },
   {
     label: "Writing",
     key: "nav.writing",
+    icon: "pen",
     links: [
-      { label: "All Writing", key: "nav.writing.all", href: "/writing/" },
-      { label: "Deployment Notes", key: "nav.writing.deployment", href: "/writing/deployment/" },
-      { label: "Career Growth", key: "nav.writing.career", href: "/writing/career/" },
+      { label: "All Writing", key: "nav.writing.all", href: "/writing/", icon: "book" },
+      { label: "Deployment Notes", key: "nav.writing.deployment", href: "/writing/deployment/", icon: "rocket" },
+      { label: "Career Growth", key: "nav.writing.career", href: "/writing/career/", icon: "growth" },
     ],
   },
   {
     label: "About",
     key: "nav.about",
+    icon: "user",
     links: [
-      { label: "About Me", key: "nav.about.me", href: "/about/" },
-      { label: "Contact", key: "nav.about.contact", href: "/contact/" },
+      { label: "About Index", key: "nav.about.all", href: "/about/", icon: "grid" },
+      { label: "About YaoYao", key: "nav.about.me", href: "/about/yaoyao/", icon: "user" },
+      { label: "Contact", key: "nav.about.contact", href: "/contact/", icon: "mail" },
     ],
   },
 ];
@@ -48,7 +52,7 @@ export const projectCards = [
     eyebrow: "Product",
     title: "Product Experience",
     titleKey: "card.projects.product.title",
-    href: "/about/",
+    href: "/about/yaoyao/",
     description: "Turning complex requirements into clear product experiences.",
     descriptionKey: "card.projects.product.description",
   },
@@ -183,5 +187,28 @@ export const careerArticles = [
     category: "Career",
     description: "A practical way to capture decisions, constraints, outcomes, and collaboration notes while work is still fresh.",
     descriptionKey: "article.portfolioEvidence.description",
+  },
+];
+
+export const aboutArticles = [
+  {
+    title: "About YaoYao",
+    titleKey: "article.aboutYaoYao.title",
+    subtitle: "Background / Working Style / Current Focus",
+    subtitleKey: "article.aboutYaoYao.subtitle",
+    href: "/about/yaoyao/",
+    category: "About",
+    description: "A personal profile covering how I work, what I care about, and what I am building toward.",
+    descriptionKey: "article.aboutYaoYao.description",
+  },
+  {
+    title: "Contact",
+    titleKey: "article.contact.title",
+    subtitle: "Email / GitHub / LinkedIn",
+    subtitleKey: "article.contact.subtitle",
+    href: "/contact/",
+    category: "About",
+    description: "A simple place for contact links and future collaboration details.",
+    descriptionKey: "article.contact.description",
   },
 ];

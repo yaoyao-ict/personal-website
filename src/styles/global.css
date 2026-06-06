@@ -72,7 +72,7 @@ input {
 
 .main-nav {
   display: flex;
-  gap: 26px;
+  gap: 18px;
   align-items: center;
 }
 
@@ -93,11 +93,13 @@ input {
 
 .nav-menu {
   position: relative;
-  margin-bottom: -7px;
-  padding-bottom: 7px;
+  margin-bottom: -4px;
+  padding-bottom: 4px;
 }
 
 .nav-menu-trigger {
+  display: inline-flex;
+  align-items: center;
   font-weight: 650;
 }
 
@@ -115,12 +117,12 @@ input {
 
 .dropdown {
   position: absolute;
-  top: calc(100% - 4px);
+  top: calc(100% - 6px);
   left: -16px;
   z-index: 20;
   display: grid;
   min-width: 210px;
-  padding: 10px;
+  padding: 6px;
   border: 1px solid rgba(26, 31, 40, 0.09);
   border-radius: 8px;
   background: rgba(255, 255, 255, 0.96);
@@ -141,9 +143,11 @@ input {
 
 .dropdown a,
 .dropdown button {
-  display: block;
+  display: flex;
+  align-items: center;
+  gap: 9px;
   width: 100%;
-  padding: 10px 12px;
+  padding: 8px 10px;
   border: 0;
   border-radius: 7px;
   background: transparent;
@@ -151,6 +155,24 @@ input {
   cursor: pointer;
   font-weight: 750;
   text-align: left;
+}
+
+.nav-label {
+  display: inline-flex;
+  gap: 7px;
+  align-items: center;
+}
+
+.nav-icon,
+.dropdown-icon {
+  width: 17px;
+  height: 17px;
+  flex: 0 0 auto;
+  fill: currentColor;
+}
+
+.dropdown-icon {
+  color: var(--accent);
 }
 
 .dropdown a:hover,
@@ -167,8 +189,8 @@ input {
 }
 
 .utility-menu {
-  margin-bottom: -7px;
-  padding-bottom: 7px;
+  margin-bottom: -4px;
+  padding-bottom: 4px;
 }
 
 .utility-menu .nav-menu-trigger {

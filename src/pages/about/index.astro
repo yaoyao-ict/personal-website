@@ -1,22 +1,19 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import PageHeader from "../../components/PageHeader.astro";
-import DetailCard from "../../components/DetailCard.astro";
+import CollectionList from "../../components/CollectionList.astro";
+import { aboutArticles } from "../../data/navigation.js";
 ---
 
 <BaseLayout title="About | YaoYao" titleKey="title.about">
   <section class="page-shell">
     <PageHeader
       eyebrow="About"
-      title="About YaoYao"
+      title="About"
       titleKey="page.about.title"
-      lead="A fuller introduction can live here: background, experience, working style, and current focus."
+      lead="Personal information, working style, contact links, and the context behind this website live here."
       leadKey="page.about.lead"
     />
-    <DetailCard title="How I Work" titleKey="detail.about.title">
-      <p data-i18n="detail.about.description">
-        I like to clarify complex problems, build reliable workflows, and keep improving experiences that users can feel.
-      </p>
-    </DetailCard>
+    <CollectionList countLabel="2 Pages" countKey="collection.about.count" items={aboutArticles} />
   </section>
 </BaseLayout>
