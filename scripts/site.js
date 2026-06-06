@@ -398,14 +398,14 @@ const translations = {
 const navToggle = document.querySelector(".nav-toggle");
 const nav = document.querySelector("#main-nav");
 const menuButtons = document.querySelectorAll(".nav-menu-trigger");
-const showMoreButton = document.querySelector("[data-show-more]");
-const timelineList = document.querySelector("[data-timeline-list]");
 const searchSummary = document.querySelector("[data-search-summary]");
 const searchEmpty = document.querySelector("[data-search-empty]");
 
 const getLanguage = () => localStorage.getItem("language") || "en";
 const getTheme = () => localStorage.getItem("theme") || "light";
 const getText = (key, lang = getLanguage()) => translations[lang]?.[key] || translations.en[key] || "";
+const getTimelineList = () => document.querySelector("[data-timeline-list]");
+const getShowMoreButton = () => document.querySelector("[data-show-more]");
 
 function closeMenus() {
   document.querySelectorAll(".nav-menu.open").forEach((menu) => {
@@ -426,6 +426,8 @@ function updateThemeButton() {
 }
 
 function updateShowMoreButton() {
+  const timelineList = getTimelineList();
+  const showMoreButton = getShowMoreButton();
   if (!showMoreButton || !timelineList) return;
   const key = timelineList.classList.contains("expanded") ? "button.showLess" : "button.showMore";
   const value = getText(key);
@@ -444,25 +446,30 @@ function updateSearchSummary(query, count) {
 }
 
 function filterHomeTimeline(query = getSearchQuery()) {
+  const timelineList = getTimelineList();
   if (!timelineList) return;
   const nextQuery = query.trim().toLowerCase();
   const items = Array.from(timelineList.querySelectorAll(".timeline-item"));
 
   if (!nextQuery) {
+    document.body.classList.remove("search-active");
     timelineList.classList.remove("searching");
     items.forEach((item) => item.classList.remove("is-search-hidden"));
     if (searchSummary) searchSummary.hidden = true;
     if (searchEmpty) searchEmpty.hidden = true;
+    const showMoreButton = getShowMoreButton();
     if (showMoreButton) showMoreButton.hidden = false;
     updateShowMoreButton();
     return;
   }
 
   timelineList.classList.add("searching");
+  document.body.classList.add("search-active");
   let matchCount = 0;
 
   items.forEach((item) => {
-    const haystack = `${item.dataset.searchText || ""} ${item.textContent || ""}`.toLowerCase();
+    const searchable = item.querySelector("[data-search-text]");
+    const haystack = `${searchable?.dataset.searchText || ""} ${item.textContent || ""}`.toLowerCase();
     const isMatch = haystack.includes(nextQuery);
     item.classList.toggle("is-search-hidden", !isMatch);
     if (isMatch) matchCount += 1;
@@ -471,6 +478,7 @@ function filterHomeTimeline(query = getSearchQuery()) {
   updateSearchSummary(query.trim(), matchCount);
   if (searchSummary) searchSummary.hidden = false;
   if (searchEmpty) searchEmpty.hidden = matchCount > 0;
+  const showMoreButton = getShowMoreButton();
   if (showMoreButton) showMoreButton.hidden = true;
 }
 
@@ -577,7 +585,7 @@ document.addEventListener("site-search-query", (event) => {
 
 window.addEventListener("popstate", () => filterHomeTimeline());
 
-showMoreButton?.addEventListener("click", () => {
+getShowMoreButton()?.addEventListener("click", () => {
   timelineList?.classList.toggle("expanded");
   updateShowMoreButton();
 });
