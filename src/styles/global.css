@@ -22,9 +22,13 @@ body {
   padding-top: var(--sticky-header-space);
   background: var(--bg);
   color: var(--ink);
-  font-family: "Plus Jakarta Sans", "Noto Sans SC", "Microsoft YaHei UI", "PingFang SC", "Segoe UI", ui-sans-serif, system-ui, sans-serif;
+  font-family: "Inter", "Noto Sans SC", "PingFang SC", "Microsoft YaHei UI", "Segoe UI", ui-sans-serif, system-ui, sans-serif;
   font-size: 16px;
   line-height: 1.55;
+  letter-spacing: 0;
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
   transition: background-color 420ms ease, color 420ms ease;
 }
 
@@ -360,23 +364,30 @@ input {
 }
 
 .antd-theme-switch.ant-switch {
-  min-width: 54px;
-  width: 54px;
-  height: 30px;
-  background: rgba(255, 255, 255, 0.62);
+  min-width: 56px;
+  width: 56px;
+  height: 32px;
   border: 1px solid rgba(26, 31, 40, 0.1);
-  line-height: 30px;
+  background: rgba(255, 255, 255, 0.72);
+  line-height: 32px;
   box-shadow: none;
 }
 
 .antd-theme-switch.ant-switch .ant-switch-handle {
-  top: 3px;
+  top: 50%;
+  inset-inline-start: 4px;
   width: 24px;
   height: 24px;
+  transform: translateY(-50%);
 }
 
 .antd-theme-switch.ant-switch.ant-switch-checked .ant-switch-handle {
-  inset-inline-start: calc(100% - 27px);
+  inset-inline-start: calc(100% - 28px);
+}
+
+.antd-theme-switch.ant-switch .ant-switch-handle::before {
+  border-radius: 50%;
+  box-shadow: 0 4px 10px rgba(26, 31, 40, 0.16);
 }
 
 .antd-theme-switch.ant-switch .ant-switch-inner,
@@ -390,13 +401,14 @@ input {
 }
 
 .antd-theme-switch.ant-switch .ant-switch-inner {
-  padding-inline-start: 24px;
-  padding-inline-end: 6px;
+  min-height: 30px;
+  padding-inline-start: 27px;
+  padding-inline-end: 7px;
 }
 
 .antd-theme-switch.ant-switch.ant-switch-checked .ant-switch-inner {
-  padding-inline-start: 6px;
-  padding-inline-end: 24px;
+  padding-inline-start: 7px;
+  padding-inline-end: 27px;
 }
 
 .antd-theme-switch.ant-switch.ant-switch-checked {
@@ -409,7 +421,7 @@ input {
 }
 
 .antd-header-search {
-  width: 188px;
+  width: 286px;
 }
 
 .antd-header-search .ant-input,
