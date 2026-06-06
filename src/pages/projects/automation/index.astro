@@ -1,18 +1,22 @@
-﻿---
+---
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import PageHeader from "../../../components/PageHeader.astro";
 import DetailCard from "../../../components/DetailCard.astro";
 ---
 
-<BaseLayout title="自动化项目 | 姚瑶">
+<BaseLayout title="Automation Projects | YaoYao" titleKey="title.projects.automation">
   <section class="page-shell">
     <PageHeader
       eyebrow="Automation"
-      title="自动化项目"
-      lead="这里放和 Python、API、Azure、内部工具相关的项目案例。"
+      title="Automation Projects"
+      titleKey="page.projects.automation.title"
+      lead="Projects related to Python, APIs, Azure, internal tools, and workflow automation."
+      leadKey="page.projects.automation.lead"
     />
-    <DetailCard title="自动化工作流">
-      <p>把重复任务拆成稳定步骤，通过脚本和服务集成减少人工操作。</p>
+    <DetailCard title="Automation Workflow" titleKey="detail.automation.title">
+      <p data-i18n="detail.automation.description">
+        Breaking repetitive tasks into reliable steps, then connecting them through scripts and services.
+      </p>
     </DetailCard>
   </section>
 </BaseLayout>

@@ -1,18 +1,22 @@
-﻿---
+---
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import PageHeader from "../../../components/PageHeader.astro";
 import DetailCard from "../../../components/DetailCard.astro";
 ---
 
-<BaseLayout title="部署笔记 | 姚瑶">
+<BaseLayout title="Deployment Notes | YaoYao" titleKey="title.writing.deployment">
   <section class="page-shell">
     <PageHeader
       eyebrow="Deployment"
-      title="部署笔记"
-      lead="记录这个网站从本地项目到 GitHub Pages 的搭建过程。"
+      title="Deployment Notes"
+      titleKey="page.writing.deployment.title"
+      lead="Notes about building this site locally and publishing it with GitHub Pages."
+      leadKey="page.writing.deployment.lead"
     />
-    <DetailCard title="GitHub Pages 发布流程">
-      <p>仓库命名为 <code>yaoyao-ict.github.io</code> 后，页面可以直接发布到根域名。</p>
+    <DetailCard title="GitHub Pages Publishing Flow" titleKey="detail.deployment.title">
+      <p data-i18n="detail.deployment.description">
+        After naming the repository <code>yaoyao-ict.github.io</code>, the site can be published at the root domain.
+      </p>
     </DetailCard>
   </section>
 </BaseLayout>

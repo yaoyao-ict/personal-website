@@ -4,21 +4,22 @@ import Footer from "../components/Footer.astro";
 import "../styles/global.css";
 
 const {
-  title = "姚瑶",
-  description = "姚瑶的个人网站，展示项目、文章、经历和联系方式。",
+  title = "YaoYao",
+  description = "YaoYao's personal website, featuring projects, writing, experience, and contact information.",
   home = false,
+  titleKey = "title.home",
 } = Astro.props;
 ---
 
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
     <title>{title}</title>
   </head>
-  <body>
+  <body data-title-key={titleKey}>
     <Header home={home} />
     <main>
       <slot />
@@ -26,9 +27,9 @@ const {
     <Footer />
     <dialog class="search-dialog" data-search-dialog>
       <form method="dialog">
-        <label for="site-search">搜索站内内容</label>
-        <input id="site-search" type="search" placeholder="输入项目、文章或技能" />
-        <button type="submit">关闭</button>
+        <label for="site-search" data-i18n="search.label">Search the site</label>
+        <input id="site-search" type="search" placeholder="Search projects, writing, or skills" data-i18n-placeholder="search.placeholder" />
+        <button type="submit" data-i18n="button.close">Close</button>
       </form>
     </dialog>
     <script is:inline src="/scripts/site.js"></script>

@@ -1,64 +1,66 @@
-﻿---
+---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Hero from "../components/Hero.astro";
 ---
 
-<BaseLayout title="姚瑶" home>
+<BaseLayout title="YaoYao" titleKey="title.home" home>
   <Hero />
 
   <section class="intro" aria-labelledby="intro-title">
     <p class="eyebrow">YaoYao</p>
-    <h1 id="intro-title">你好，我是姚瑶。</h1>
-    <p>
-      我专注于把复杂问题拆成清晰、可靠、易维护的产品体验。这里可以放你的职业定位、
-      当前关注方向，以及你希望别人第一眼记住的能力。
+    <h1 id="intro-title" data-i18n="home.hero.title">Hi, I'm YaoYao.</h1>
+    <p data-i18n="home.hero.lead">
+      I focus on turning complex problems into clear, reliable, and maintainable product experiences.
+      This space can introduce my role, current interests, and the strengths I want people to remember.
     </p>
     <div class="intro-actions">
-      <a class="primary-link" href="/projects/">查看项目</a>
-      <a class="secondary-link" href="/contact/">联系我</a>
+      <a class="primary-link" href="/projects/" data-i18n="home.cta.projects">View projects</a>
+      <a class="secondary-link" href="/contact/" data-i18n="home.cta.contact">Contact me</a>
     </div>
   </section>
 
   <div class="content-grid">
     <section class="articles" aria-labelledby="work-title">
-      <h2 id="work-title" class="section-title">精选项目</h2>
+      <h2 id="work-title" class="section-title" data-i18n="home.featuredProjects">Featured Projects</h2>
 
       <article class="post featured">
-        <a href="/projects/data/" class="post-title">项目一：智能仪表盘</a>
+        <a href="/projects/data/" class="post-title" data-i18n="home.project.data.title">Project One: Smart Dashboard</a>
         <p class="subtitle">React / TypeScript / Data Visualization</p>
-        <p>
-          用一句话说明这个项目解决了什么问题、你的职责是什么，以及它带来了什么结果。
-          这里适合放 2 到 3 行简洁描述。
+        <p data-i18n="home.project.data.description">
+          A concise summary of the problem, my role, and the outcome. This is the place for two or three
+          focused lines rather than a long case study.
         </p>
       </article>
 
       <article class="post">
-        <a href="/projects/automation/" class="post-title">项目二：自动化工作流</a>
+        <a href="/projects/automation/" class="post-title" data-i18n="home.project.automation.title">Project Two: Automation Workflow</a>
         <p class="subtitle">Python / Azure / API Integration</p>
-        <p>
-          展示你如何把重复操作自动化，或者如何连接多个系统，让业务流程更稳定、更高效。
+        <p data-i18n="home.project.automation.description">
+          A project about reducing repetitive work by connecting systems, scripting workflows, and making
+          daily operations more reliable.
         </p>
       </article>
 
       <article class="post">
-        <a href="/projects/" class="post-title">项目三：个人知识库</a>
+        <a href="/projects/" class="post-title" data-i18n="home.project.knowledge.title">Project Three: Personal Knowledge Base</a>
         <p class="subtitle">Content System / Search / UX</p>
-        <p>
-          如果你有博客、笔记系统、开源项目或课程内容，可以用这个卡片入口聚合起来。
+        <p data-i18n="home.project.knowledge.description">
+          A hub for notes, writing, open-source work, or learning material that can grow over time.
         </p>
       </article>
     </section>
 
-    <aside class="sidebar" aria-label="侧边内容">
+    <aside class="sidebar" aria-label="Side content">
       <section>
-        <h2 class="section-title">关于我</h2>
-        <p>
-          这里放 4 到 6 句自我介绍：你是谁、在哪里工作或学习、擅长什么、正在寻找什么机会。
+        <h2 class="section-title" data-i18n="home.about.title">About Me</h2>
+        <p data-i18n="home.about.description">
+          This section can hold a short introduction: who I am, what I work on, what I am good at, and what
+          opportunities I am open to.
         </p>
       </section>
 
       <section class="skills">
-        <h2 class="section-title">技能标签</h2>
+        <h2 class="section-title" data-i18n="home.skills.title">Skills</h2>
         <div class="chips">
           <a href="/projects/">React</a>
           <a href="/projects/">TypeScript</a>
@@ -74,18 +76,18 @@ import Hero from "../components/Hero.astro";
   </div>
 
   <section class="writing" aria-labelledby="writing-title">
-    <h2 id="writing-title" class="section-title">最近文章</h2>
+    <h2 id="writing-title" class="section-title" data-i18n="home.recentWriting">Recent Writing</h2>
     <div class="writing-list">
       <a href="/writing/deployment/">
-        <span>如何搭建一个可长期维护的个人网站</span>
+        <span data-i18n="home.writing.website">Building a maintainable personal website</span>
         <small>Web / Deployment</small>
       </a>
       <a href="/writing/deployment/">
-        <span>我如何用 Azure 发布静态站点</span>
-        <small>Azure / GitHub</small>
+        <span data-i18n="home.writing.pages">Publishing a static site with GitHub Pages</span>
+        <small>GitHub / Deployment</small>
       </a>
       <a href="/writing/career/">
-        <span>把项目经历写得更像作品，而不是流水账</span>
+        <span data-i18n="home.writing.portfolio">Writing project stories that feel like real work</span>
         <small>Career / Writing</small>
       </a>
     </div>
@@ -93,8 +95,8 @@ import Hero from "../components/Hero.astro";
 
   <section class="newsletter" aria-labelledby="contact-title">
     <div>
-      <h2 id="contact-title">想聊项目、合作或机会？</h2>
-      <p>把这里换成你的邮箱、LinkedIn、GitHub，或者接入一个表单服务。</p>
+      <h2 id="contact-title" data-i18n="home.contact.title">Want to talk about a project, collaboration, or opportunity?</h2>
+      <p data-i18n="home.contact.description">Replace this with my email, LinkedIn, GitHub, or a form service later.</p>
     </div>
     <div class="contact-links">
       <a href="mailto:you@example.com">you@example.com</a>

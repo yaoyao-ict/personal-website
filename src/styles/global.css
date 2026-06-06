@@ -156,6 +156,33 @@ input {
   align-items: center;
 }
 
+.language-picker {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 32px;
+  padding: 0 8px;
+  border: 1px solid rgba(26, 31, 40, 0.1);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.48);
+  color: var(--ink);
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.language-picker select {
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+.language-picker select:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 2px;
+}
+
 .icon-button {
   display: inline-flex;
   align-items: center;
@@ -654,6 +681,11 @@ body.dark .dropdown {
   border-color: #2d3442;
 }
 
+body.dark .language-picker {
+  background: rgba(24, 28, 39, 0.62);
+  border-color: #2d3442;
+}
+
 body.dark .content-card,
 body.dark .detail-card {
   background: #1d2330;
@@ -731,6 +763,7 @@ body.dark .writing-list a {
 
   .header-tools {
     justify-content: flex-start;
+    flex-wrap: wrap;
   }
 
   .hero {

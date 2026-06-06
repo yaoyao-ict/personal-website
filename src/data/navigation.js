@@ -1,25 +1,28 @@
 export const navigation = [
   {
-    label: "项目",
+    label: "Projects",
+    key: "nav.projects",
     links: [
-      { label: "全部项目", href: "/projects/" },
-      { label: "自动化", href: "/projects/automation/" },
-      { label: "数据与仪表盘", href: "/projects/data/" },
+      { label: "All Projects", key: "nav.projects.all", href: "/projects/" },
+      { label: "Automation", key: "nav.projects.automation", href: "/projects/automation/" },
+      { label: "Data Dashboards", key: "nav.projects.data", href: "/projects/data/" },
     ],
   },
   {
-    label: "文章",
+    label: "Writing",
+    key: "nav.writing",
     links: [
-      { label: "全部文章", href: "/writing/" },
-      { label: "部署笔记", href: "/writing/deployment/" },
-      { label: "职业成长", href: "/writing/career/" },
+      { label: "All Writing", key: "nav.writing.all", href: "/writing/" },
+      { label: "Deployment Notes", key: "nav.writing.deployment", href: "/writing/deployment/" },
+      { label: "Career Growth", key: "nav.writing.career", href: "/writing/career/" },
     ],
   },
   {
-    label: "关于",
+    label: "About",
+    key: "nav.about",
     links: [
-      { label: "关于我", href: "/about/" },
-      { label: "联系方式", href: "/contact/" },
+      { label: "About Me", key: "nav.about.me", href: "/about/" },
+      { label: "Contact", key: "nav.about.contact", href: "/contact/" },
     ],
   },
 ];
@@ -27,35 +30,45 @@ export const navigation = [
 export const projectCards = [
   {
     eyebrow: "Automation",
-    title: "自动化工作流",
+    title: "Automation Workflows",
+    titleKey: "card.projects.automation.title",
     href: "/projects/automation/",
-    description: "脚本、API 集成、流程自动化和运维效率。",
+    description: "Scripts, API integrations, process automation, and operational efficiency.",
+    descriptionKey: "card.projects.automation.description",
   },
   {
     eyebrow: "Data",
-    title: "数据与仪表盘",
+    title: "Data Dashboards",
+    titleKey: "card.projects.data.title",
     href: "/projects/data/",
-    description: "数据可视化、报表、监控和业务洞察。",
+    description: "Data visualization, reporting, monitoring, and business insights.",
+    descriptionKey: "card.projects.data.description",
   },
   {
     eyebrow: "Product",
-    title: "产品与体验",
+    title: "Product Experience",
+    titleKey: "card.projects.product.title",
     href: "/about/",
-    description: "把复杂需求整理成清晰的产品体验。",
+    description: "Turning complex requirements into clear product experiences.",
+    descriptionKey: "card.projects.product.description",
   },
 ];
 
 export const writingCards = [
   {
     eyebrow: "Deployment",
-    title: "部署笔记",
+    title: "Deployment Notes",
+    titleKey: "card.writing.deployment.title",
     href: "/writing/deployment/",
-    description: "GitHub Pages、Azure、自动部署和个人网站维护。",
+    description: "GitHub Pages, Azure, automated deployment, and website maintenance.",
+    descriptionKey: "card.writing.deployment.description",
   },
   {
     eyebrow: "Career",
-    title: "职业成长",
+    title: "Career Growth",
+    titleKey: "card.writing.career.title",
     href: "/writing/career/",
-    description: "项目表达、作品集、沟通和长期积累。",
+    description: "Project storytelling, portfolio writing, collaboration, and long-term growth.",
+    descriptionKey: "card.writing.career.description",
   },
 ];

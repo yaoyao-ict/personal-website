@@ -1,25 +1,27 @@
-﻿---
+---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import PageHeader from "../../components/PageHeader.astro";
 ---
 
-<BaseLayout title="联系 | 姚瑶">
+<BaseLayout title="Contact | YaoYao" titleKey="title.contact">
   <section class="page-shell">
     <PageHeader
       eyebrow="Contact"
-      title="联系我"
-      lead="这里可以放邮箱、GitHub、LinkedIn，或者之后接入表单服务。"
+      title="Contact"
+      titleKey="page.contact.title"
+      lead="This page can hold email, GitHub, LinkedIn, or a form service later."
+      leadKey="page.contact.lead"
     />
     <div class="card-grid">
       <a class="content-card" href="mailto:you@example.com">
         <span>Email</span>
         <strong>you@example.com</strong>
-        <p>替换成你的真实联系邮箱。</p>
+        <p data-i18n="page.contact.email">Replace this with my real email address.</p>
       </a>
       <a class="content-card" href="https://github.com/yaoyao-ict">
         <span>GitHub</span>
         <strong>yaoyao-ict</strong>
-        <p>查看代码、项目和网站仓库。</p>
+        <p data-i18n="page.contact.github">View code, projects, and the website repository.</p>
       </a>
     </div>
   </section>

@@ -6,8 +6,8 @@ const { cards } = Astro.props;
   {cards.map((card) => (
     <a class="content-card" href={card.href}>
       <span>{card.eyebrow}</span>
-      <strong>{card.title}</strong>
-      <p>{card.description}</p>
+      <strong data-i18n={card.titleKey}>{card.title}</strong>
+      <p data-i18n={card.descriptionKey}>{card.description}</p>
     </a>
   ))}
 </div>

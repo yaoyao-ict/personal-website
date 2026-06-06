@@ -1,9 +1,9 @@
 ---
-const { eyebrow, title, lead } = Astro.props;
+const { eyebrow, title, lead, titleKey, leadKey } = Astro.props;
 ---
 
 <header class="page-header">
   <p class="eyebrow">{eyebrow}</p>
-  <h1 class="page-title">{title}</h1>
-  {lead && <p class="page-lead">{lead}</p>}
+  <h1 class="page-title" data-i18n={titleKey}>{title}</h1>
+  {lead && <p class="page-lead" data-i18n={leadKey}>{lead}</p>}
 </header>
