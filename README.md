@@ -25,7 +25,7 @@
 
 ## 需要替换的内容
 
-- `你的名字`
+- `姚瑶` / `YaoYao`
 - `you@example.com`
 - `https://github.com/your-username`
 - LinkedIn 链接
