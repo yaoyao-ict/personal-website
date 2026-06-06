@@ -393,11 +393,27 @@ input {
 .antd-theme-switch.ant-switch .ant-switch-inner,
 .antd-theme-switch.ant-switch .ant-switch-inner-checked,
 .antd-theme-switch.ant-switch .ant-switch-inner-unchecked {
-  display: grid;
-  place-items: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: var(--brand);
   font-size: 14px;
   line-height: 1;
+}
+
+.antd-theme-switch.ant-switch .anticon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 14px;
+  height: 14px;
+  line-height: 1;
+}
+
+.antd-theme-switch.ant-switch .anticon svg {
+  display: block;
+  width: 14px;
+  height: 14px;
 }
 
 .antd-theme-switch.ant-switch .ant-switch-inner {
@@ -808,6 +824,10 @@ input {
 
 .timeline-card-meta {
   margin-bottom: 10px;
+}
+
+.timeline-card-meta .ant-typography {
+  color: var(--muted);
 }
 
 .timeline-card-meta .ant-tag {
@@ -1520,6 +1540,11 @@ body.dark .timeline-list.ant-timeline .ant-steps-item-icon {
 body.dark .timeline-card.ant-card {
   border-color: rgba(255, 255, 255, 0.1);
   background: rgba(29, 35, 48, 0.88);
+}
+
+body.dark .timeline-card-meta .ant-typography,
+body.dark .timeline-card-meta time {
+  color: var(--muted);
 }
 
 body.dark .timeline-card-title.ant-typography {
