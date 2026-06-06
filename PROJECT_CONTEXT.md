@@ -37,7 +37,7 @@ Reference patterns already used:
 - Top navigation with dropdown category menus.
 - Second-level category pages, such as `/projects/data/`.
 - Third-level detail pages, such as `/projects/data/smart-dashboard/`.
-- A dedicated About category with personal information under `/about/yaoyao/`.
+- A dedicated About page with personal information directly under `/about/`.
 - Light/dark theme switching.
 - English and Chinese language switching.
 
@@ -87,7 +87,6 @@ Writing categories:
 About category:
 
 - `/about/`
-- `/about/yaoyao/`
 - `/contact/`
 
 ## Design Notes

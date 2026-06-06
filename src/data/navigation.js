@@ -23,11 +23,7 @@ export const navigation = [
     label: "About",
     key: "nav.about",
     icon: "user",
-    links: [
-      { label: "About Index", key: "nav.about.all", href: "/about/", icon: "grid" },
-      { label: "About YaoYao", key: "nav.about.me", href: "/about/yaoyao/", icon: "user" },
-      { label: "Contact", key: "nav.about.contact", href: "/contact/", icon: "mail" },
-    ],
+    href: "/about/",
   },
 ];
 
@@ -52,7 +48,7 @@ export const projectCards = [
     eyebrow: "Product",
     title: "Product Experience",
     titleKey: "card.projects.product.title",
-    href: "/about/yaoyao/",
+    href: "/about/",
     description: "Turning complex requirements into clear product experiences.",
     descriptionKey: "card.projects.product.description",
   },
@@ -192,16 +188,6 @@ export const careerArticles = [
 
 export const aboutArticles = [
   {
-    title: "About YaoYao",
-    titleKey: "article.aboutYaoYao.title",
-    subtitle: "Background / Working Style / Current Focus",
-    subtitleKey: "article.aboutYaoYao.subtitle",
-    href: "/about/yaoyao/",
-    category: "About",
-    description: "A personal profile covering how I work, what I care about, and what I am building toward.",
-    descriptionKey: "article.aboutYaoYao.description",
-  },
-  {
     title: "Contact",
     titleKey: "article.contact.title",
     subtitle: "Email / GitHub / LinkedIn",
@@ -210,5 +196,68 @@ export const aboutArticles = [
     category: "About",
     description: "A simple place for contact links and future collaboration details.",
     descriptionKey: "article.contact.description",
+  },
+];
+
+export const homeTimeline = [
+  {
+    title: "Building a Maintainable Personal Website",
+    titleKey: "article.website.title",
+    description: "Notes on turning a simple static page into a maintainable Astro site.",
+    descriptionKey: "article.website.description",
+    href: "/writing/deployment/personal-website/",
+    meta: "Tutorial / Astro / 2026",
+    metaKey: "timeline.website.meta",
+    visible: true,
+  },
+  {
+    title: "Publishing a Static Site with GitHub Pages",
+    titleKey: "article.githubPages.title",
+    description: "How this site is built locally, committed to GitHub, and published from the gh-pages branch.",
+    descriptionKey: "article.githubPages.description",
+    href: "/writing/deployment/github-pages/",
+    meta: "Article / GitHub Pages / 2026",
+    metaKey: "timeline.githubPages.meta",
+    visible: true,
+  },
+  {
+    title: "Smart Dashboard",
+    titleKey: "article.smartDashboard.title",
+    description: "A practical dashboard project focused on making key metrics easier to scan, compare, and act on.",
+    descriptionKey: "article.smartDashboard.description",
+    href: "/projects/data/smart-dashboard/",
+    meta: "Case Study / Data / 2026",
+    metaKey: "timeline.smartDashboard.meta",
+    visible: true,
+  },
+  {
+    title: "Automation Workflow",
+    titleKey: "article.automationWorkflow.title",
+    description: "A workflow automation case study about replacing repetitive manual steps with reliable scripts and service integrations.",
+    descriptionKey: "article.automationWorkflow.description",
+    href: "/projects/automation/workflow-automation/",
+    meta: "Case Study / Automation / 2026",
+    metaKey: "timeline.automation.meta",
+    visible: false,
+  },
+  {
+    title: "Writing Project Stories That Feel Like Real Work",
+    titleKey: "article.projectStories.title",
+    description: "A strong project page explains the problem, decisions, process, and outcome.",
+    descriptionKey: "article.projectStories.description",
+    href: "/writing/career/project-stories/",
+    meta: "Article / Career / 2026",
+    metaKey: "timeline.projectStories.meta",
+    visible: false,
+  },
+  {
+    title: "Metrics Review System",
+    titleKey: "article.metricsReview.title",
+    description: "A lightweight reporting structure for reviewing recurring metrics, changes, and follow-up actions.",
+    descriptionKey: "article.metricsReview.description",
+    href: "/projects/data/metrics-review/",
+    meta: "Case Study / Data / 2026",
+    metaKey: "timeline.metricsReview.meta",
+    visible: false,
   },
 ];

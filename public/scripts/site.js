@@ -169,11 +169,22 @@ const translations = {
     "article.section.background": "Background",
     "article.section.focus": "Current Focus",
     "article.section.work": "How I Work",
+    "button.showLess": "Show less",
+    "button.showMore": "Show more",
     "collection.about.count": "2 Pages",
+    "home.feed.eyebrow": "Latest",
+    "home.feed.lead": "Recent writing, tutorials, and project notes are organized here in reverse chronological order.",
+    "home.feed.title": "Articles and Tutorials",
     "nav.about.all": "About Index",
     "nav.about.me": "About YaoYao",
     "page.about.lead": "Personal information, working style, contact links, and the context behind this website live here.",
     "page.about.title": "About",
+    "timeline.automation.meta": "Case Study / Automation / 2026",
+    "timeline.githubPages.meta": "Article / GitHub Pages / 2026",
+    "timeline.metricsReview.meta": "Case Study / Data / 2026",
+    "timeline.projectStories.meta": "Article / Career / 2026",
+    "timeline.smartDashboard.meta": "Case Study / Data / 2026",
+    "timeline.website.meta": "Tutorial / Astro / 2026",
   },
   zh: {
     "aria.home": "首页",
@@ -345,11 +356,22 @@ const translations = {
     "article.section.background": "背景",
     "article.section.focus": "当前关注",
     "article.section.work": "工作方式",
+    "button.showLess": "收起",
+    "button.showMore": "查看更多",
     "collection.about.count": "2 个页面",
+    "home.feed.eyebrow": "最新",
+    "home.feed.lead": "最近的文章、教程和项目笔记会按时间倒序整理在这里。",
+    "home.feed.title": "文章和教程",
     "nav.about.all": "About 索引",
     "nav.about.me": "关于姚瑶",
     "page.about.lead": "个人信息、工作方式、联系方式，以及这个网站背后的背景都会放在这里。",
     "page.about.title": "关于",
+    "timeline.automation.meta": "案例 / Automation / 2026",
+    "timeline.githubPages.meta": "文章 / GitHub Pages / 2026",
+    "timeline.metricsReview.meta": "案例 / Data / 2026",
+    "timeline.projectStories.meta": "文章 / 职业成长 / 2026",
+    "timeline.smartDashboard.meta": "案例 / Data / 2026",
+    "timeline.website.meta": "教程 / Astro / 2026",
   },
 };
 
@@ -361,6 +383,8 @@ const themeButton = document.querySelector("[data-theme]");
 const menuButtons = document.querySelectorAll(".nav-menu-trigger");
 const languageTrigger = document.querySelector("[data-language-trigger]");
 const languageOptions = document.querySelectorAll("[data-language-option]");
+const showMoreButton = document.querySelector("[data-show-more]");
+const timelineList = document.querySelector("[data-timeline-list]");
 
 const getLanguage = () => localStorage.getItem("language") || "en";
 const getTheme = () => localStorage.getItem("theme") || "light";
@@ -379,6 +403,14 @@ function updateThemeButton() {
   const value = getText(key);
   themeButton.textContent = value;
   themeButton.setAttribute("aria-label", value);
+}
+
+function updateShowMoreButton() {
+  if (!showMoreButton || !timelineList) return;
+  const key = timelineList.classList.contains("expanded") ? "button.showLess" : "button.showMore";
+  const value = getText(key);
+  showMoreButton.dataset.i18n = key;
+  showMoreButton.textContent = value;
 }
 
 function applyTheme(theme, animate = false) {
@@ -424,6 +456,7 @@ function applyLanguage(lang) {
   }
 
   updateThemeButton();
+  updateShowMoreButton();
 }
 
 navToggle?.addEventListener("click", () => {
@@ -465,6 +498,11 @@ languageOptions.forEach((button) => {
     applyLanguage(button.dataset.languageOption);
     closeMenus();
   });
+});
+
+showMoreButton?.addEventListener("click", () => {
+  timelineList?.classList.toggle("expanded");
+  updateShowMoreButton();
 });
 
 applyTheme(getTheme());

@@ -72,7 +72,6 @@ public/
 /writing/career/project-stories/
 /writing/career/portfolio-evidence/
 /about/
-/about/yaoyao/
 /contact/
 ```
 

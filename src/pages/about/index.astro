@@ -1,19 +1,52 @@
 ---
-import BaseLayout from "../../layouts/BaseLayout.astro";
-import PageHeader from "../../components/PageHeader.astro";
-import CollectionList from "../../components/CollectionList.astro";
-import { aboutArticles } from "../../data/navigation.js";
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+
+const toc = [
+  { id: "background", label: "Background", key: "article.section.background" },
+  { id: "work", label: "How I Work", key: "article.section.work" },
+  { id: "focus", label: "Current Focus", key: "article.section.focus" },
+  { id: "contact", label: "Contact", key: "article.contact.title" },
+];
 ---
 
-<BaseLayout title="About | YaoYao" titleKey="title.about">
-  <section class="page-shell">
-    <PageHeader
-      eyebrow="About"
-      title="About"
-      titleKey="page.about.title"
-      lead="Personal information, working style, contact links, and the context behind this website live here."
-      leadKey="page.about.lead"
-    />
-    <CollectionList countLabel="2 Pages" countKey="collection.about.count" items={aboutArticles} />
+<ArticleLayout
+  title="About YaoYao"
+  titleKey="article.aboutYaoYao.title"
+  subtitle="A personal profile covering how I work, what I care about, and what I am building toward."
+  subtitleKey="article.aboutYaoYao.description"
+  eyebrow="About"
+  toc={toc}
+>
+  <section id="background">
+    <h2 data-i18n="article.section.background">Background</h2>
+    <p data-i18n="article.aboutYaoYao.background">
+      I am building this site as a clearer home for my projects, writing, technical notes, and professional story.
+    </p>
   </section>
-</BaseLayout>
+
+  <section id="work">
+    <h2 data-i18n="article.section.work">How I Work</h2>
+    <p data-i18n="article.aboutYaoYao.work">
+      I like to clarify complex problems, build reliable workflows, and keep improving experiences that users can actually feel.
+    </p>
+  </section>
+
+  <section id="focus">
+    <h2 data-i18n="article.section.focus">Current Focus</h2>
+    <p data-i18n="article.aboutYaoYao.focus">
+      This site will gradually collect work around product experience, data dashboards, workflow automation, and maintainable web systems.
+    </p>
+  </section>
+
+  <section id="contact">
+    <h2 data-i18n="article.contact.title">Contact</h2>
+    <p data-i18n="article.contact.description">
+      A simple place for contact links and future collaboration details.
+    </p>
+    <div class="contact-links article-contact-links">
+      <a href="mailto:you@example.com">you@example.com</a>
+      <a href="https://github.com/yaoyao-ict">GitHub</a>
+      <a href="https://www.linkedin.com/">LinkedIn</a>
+    </div>
+  </section>
+</ArticleLayout>

@@ -30,22 +30,31 @@ const icons = {
 
   <nav class="main-nav" id="main-nav" aria-label="Main navigation" data-i18n-aria="aria.mainNav">
     {navigation.map((group) => (
-      <div class="nav-menu">
-        <button type="button" class="nav-menu-trigger" aria-expanded="false">
+      group.links ? (
+        <div class="nav-menu">
+          <button type="button" class="nav-menu-trigger" aria-expanded="false">
+            <span class="nav-label">
+              <svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true"><path d={icons[group.icon]} /></svg>
+              <span data-i18n={group.key}>{group.label}</span>
+            </span>
+          </button>
+          <div class="dropdown">
+            {group.links.map((link) => (
+              <a href={link.href}>
+                <svg class="dropdown-icon" viewBox="0 0 24 24" aria-hidden="true"><path d={icons[link.icon]} /></svg>
+                <span data-i18n={link.key}>{link.label}</span>
+              </a>
+            ))}
+          </div>
+        </div>
+      ) : (
+        <a class="nav-direct-link" href={group.href}>
           <span class="nav-label">
             <svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true"><path d={icons[group.icon]} /></svg>
             <span data-i18n={group.key}>{group.label}</span>
           </span>
-        </button>
-        <div class="dropdown">
-          {group.links.map((link) => (
-            <a href={link.href}>
-              <svg class="dropdown-icon" viewBox="0 0 24 24" aria-hidden="true"><path d={icons[link.icon]} /></svg>
-              <span data-i18n={link.key}>{link.label}</span>
-            </a>
-          ))}
-        </div>
-      </div>
+        </a>
+      )
     ))}
   </nav>
 

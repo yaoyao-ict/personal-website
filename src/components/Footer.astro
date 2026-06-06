@@ -1,5 +1,7 @@
 ---
 import { navigation } from "../data/navigation.js";
+
+const footerLinks = navigation.flatMap((group) => group.links ?? [{ label: group.label, key: group.key, href: group.href }]);
 ---
 
 <footer class="site-footer">
@@ -7,7 +9,7 @@ import { navigation } from "../data/navigation.js";
   <div class="footer-links">
     <section>
       <h2 data-i18n="footer.site">Site</h2>
-      {navigation.flatMap((group) => group.links).slice(0, 5).map((link) => (
+      {footerLinks.slice(0, 5).map((link) => (
         <a href={link.href} data-i18n={link.key}>{link.label}</a>
       ))}
     </section>
@@ -20,7 +22,7 @@ import { navigation } from "../data/navigation.js";
     <section>
       <h2 data-i18n="footer.next">Next</h2>
       <a href="/writing/deployment/" data-i18n="nav.writing.deployment">Deployment Notes</a>
-      <a href="/contact/" data-i18n="nav.about.contact">Contact</a>
+      <a href="/about/#contact" data-i18n="nav.about.contact">Contact</a>
     </section>
   </div>
   <p class="copyright" data-i18n="footer.copyright">Copyright 2026 YaoYao. All rights reserved.</p>
