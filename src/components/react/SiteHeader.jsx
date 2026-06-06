@@ -7,8 +7,10 @@ import {
   DownOutlined,
   FolderOutlined,
   MenuOutlined,
+  MoonOutlined,
   RocketOutlined,
   SearchOutlined,
+  SunOutlined,
   ThunderboltOutlined,
   UserOutlined,
 } from "@ant-design/icons";
@@ -39,6 +41,7 @@ const text = {
     "nav.writing.all": "All Writing",
     "nav.writing.career": "Career Growth",
     "nav.writing.deployment": "Deployment Notes",
+    "search.placeholder": "Search projects, writing, or skills",
   },
   zh: {
     "button.menu": "\u83dc\u5355",
@@ -54,6 +57,7 @@ const text = {
     "nav.writing.all": "\u5168\u90e8\u6587\u7ae0",
     "nav.writing.career": "\u804c\u4e1a\u6210\u957f",
     "nav.writing.deployment": "\u90e8\u7f72\u7b14\u8bb0",
+    "search.placeholder": "\u641c\u7d22\u9879\u76ee\u3001\u6587\u7ae0\u6216\u6280\u80fd",
   },
 };
 
@@ -69,19 +73,25 @@ function storedTheme() {
 
 export default function SiteHeader({ navigation, home = false, currentPath = "/" }) {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [language, setLanguage] = useState(storedLanguage);
-  const [theme, setTheme] = useState(storedTheme);
+  const [language, setLanguage] = useState("en");
+  const [theme, setTheme] = useState("light");
   const [searchValue, setSearchValue] = useState("");
 
   useEffect(() => {
     const syncLanguage = (event) => setLanguage(event.detail?.lang || storedLanguage());
     const syncTheme = (event) => setTheme(event.detail?.theme || storedTheme());
+    const syncSearch = () => setSearchValue(new URLSearchParams(window.location.search).get("q") || "");
 
+    setLanguage(storedLanguage());
+    setTheme(storedTheme());
+    syncSearch();
     document.addEventListener("site-language-change", syncLanguage);
     document.addEventListener("site-theme-change", syncTheme);
+    window.addEventListener("popstate", syncSearch);
     return () => {
       document.removeEventListener("site-language-change", syncLanguage);
       document.removeEventListener("site-theme-change", syncTheme);
+      window.removeEventListener("popstate", syncSearch);
     };
   }, []);
 
@@ -99,8 +109,19 @@ export default function SiteHeader({ navigation, home = false, currentPath = "/"
     document.dispatchEvent(new CustomEvent("site-set-theme", { detail: { theme: checked ? "dark" : "light" } }));
   };
 
-  const openSearch = (query = searchValue) => {
-    document.dispatchEvent(new CustomEvent("site-open-search", { detail: { query } }));
+  const runSearch = (query = searchValue) => {
+    const nextQuery = query.trim();
+    const params = new URLSearchParams();
+    if (nextQuery) params.set("q", nextQuery);
+    const target = `/${params.toString() ? `?${params.toString()}` : ""}#latest`;
+
+    if (window.location.pathname === "/") {
+      window.history.pushState({}, "", target);
+      document.dispatchEvent(new CustomEvent("site-search-query", { detail: { query: nextQuery } }));
+      return;
+    }
+
+    window.location.assign(target);
   };
 
   return (
@@ -166,18 +187,18 @@ export default function SiteHeader({ navigation, home = false, currentPath = "/"
           <Switch
             className="antd-theme-switch"
             checked={theme === "dark"}
-            checkedChildren="Dark"
-            unCheckedChildren="Light"
+            checkedChildren={<MoonOutlined />}
+            unCheckedChildren={<SunOutlined />}
             aria-label={t("button.theme", "Theme")}
             onChange={setSiteTheme}
           />
           <Input.Search
             className="antd-header-search"
             value={searchValue}
-            placeholder={t("button.search", "Search")}
+            placeholder={t("search.placeholder", "Search projects, writing, or skills")}
             enterButton={<SearchOutlined />}
             onChange={(event) => setSearchValue(event.target.value)}
-            onSearch={openSearch}
+            onSearch={runSearch}
             aria-label={t("button.search", "Search")}
           />
         </Space>

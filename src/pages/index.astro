@@ -1,31 +1,23 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Hero from "../components/Hero.astro";
+import HomeTimeline from "../components/react/HomeTimeline.jsx";
 import { homeTimeline } from "../data/navigation.js";
 ---
 
 <BaseLayout title="YaoYao" titleKey="title.home" home>
   <Hero />
 
-  <section class="home-feed" aria-labelledby="feed-title">
+  <section id="latest" class="home-feed" aria-labelledby="feed-title">
     <p class="eyebrow" data-i18n="home.feed.eyebrow">Latest</p>
     <h1 id="feed-title" data-i18n="home.feed.title">Articles and Tutorials</h1>
     <p class="home-feed-lead" data-i18n="home.feed.lead">
       Recent writing, tutorials, and project notes are organized here in reverse chronological order.
     </p>
+    <p class="search-summary" data-search-summary hidden></p>
+    <p class="search-empty" data-search-empty data-i18n="search.empty" hidden>No results found. Try a different keyword.</p>
 
-    <div class="timeline-list" data-timeline-list>
-      {homeTimeline.map((item) => (
-        <article class:list={["timeline-item", !item.visible && "is-hidden"]}>
-          <div class="timeline-marker" aria-hidden="true"></div>
-          <div class="timeline-content">
-            <p class="timeline-meta" data-i18n={item.metaKey}>{item.meta}</p>
-            <a class="post-title" href={item.href} data-i18n={item.titleKey}>{item.title}</a>
-            <p data-i18n={item.descriptionKey}>{item.description}</p>
-          </div>
-        </article>
-      ))}
-    </div>
+    <HomeTimeline items={homeTimeline} client:load />
 
     <button class="show-more" type="button" data-show-more data-i18n="button.showMore">Show more</button>
   </section>
