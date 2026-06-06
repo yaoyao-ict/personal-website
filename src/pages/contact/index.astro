@@ -9,19 +9,24 @@ import PageHeader from "../../components/PageHeader.astro";
       eyebrow="Contact"
       title="Contact"
       titleKey="page.contact.title"
-      lead="This page can hold email, GitHub, LinkedIn, or a form service later."
+      lead="A simple place to find public links and future collaboration details."
       leadKey="page.contact.lead"
     />
     <div class="card-grid">
-      <a class="content-card" href="mailto:you@example.com">
-        <span>Email</span>
-        <strong>you@example.com</strong>
-        <p data-i18n="page.contact.email">Replace this with my real email address.</p>
-      </a>
       <a class="content-card" href="https://github.com/yaoyao-ict">
         <span>GitHub</span>
         <strong>yaoyao-ict</strong>
         <p data-i18n="page.contact.github">View code, projects, and the website repository.</p>
+      </a>
+      <a class="content-card" href="/projects/">
+        <span data-i18n="page.contact.projectsLabel">Projects</span>
+        <strong data-i18n="page.contact.projectsTitle">Project work</strong>
+        <p data-i18n="page.contact.projects">Browse selected projects around dashboards, automation, and product experience.</p>
+      </a>
+      <a class="content-card" href="/writing/">
+        <span data-i18n="page.contact.writingLabel">Writing</span>
+        <strong data-i18n="page.contact.writingTitle">Notes and essays</strong>
+        <p data-i18n="page.contact.writing">Read notes about deployment, portfolio storytelling, and building this site.</p>
       </a>
     </div>
   </section>

@@ -190,7 +190,7 @@ export const aboutArticles = [
   {
     title: "Contact",
     titleKey: "article.contact.title",
-    subtitle: "Email / GitHub / LinkedIn",
+    subtitle: "GitHub / Projects / Writing",
     subtitleKey: "article.contact.subtitle",
     href: "/contact/",
     category: "About",
