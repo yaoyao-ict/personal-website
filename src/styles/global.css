@@ -417,6 +417,24 @@ input {
   background: rgba(255, 255, 255, 0.86) !important;
 }
 
+.antd-search-clear.ant-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  color: var(--muted);
+}
+
+.antd-search-clear.ant-btn:not(:disabled):hover {
+  color: var(--brand) !important;
+}
+
+.antd-search-clear.ant-btn:disabled {
+  opacity: 0.38;
+}
+
 .antd-header-tools .ant-btn,
 .antd-mobile-toggle {
   border-color: rgba(26, 31, 40, 0.1);

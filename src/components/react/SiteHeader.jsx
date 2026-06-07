@@ -4,6 +4,7 @@ import {
   AppstoreOutlined,
   BarChartOutlined,
   BookOutlined,
+  CloseCircleOutlined,
   DownOutlined,
   FolderOutlined,
   MenuOutlined,
@@ -29,6 +30,7 @@ const iconMap = {
 const text = {
   en: {
     "button.menu": "Menu",
+    "button.clearSearch": "Clear search",
     "button.search": "Search",
     "button.theme": "Theme",
     "label.language": "Language",
@@ -45,6 +47,7 @@ const text = {
   },
   zh: {
     "button.menu": "\u83dc\u5355",
+    "button.clearSearch": "\u6e05\u7a7a\u641c\u7d22",
     "button.search": "\u641c\u7d22",
     "button.theme": "\u4e3b\u9898",
     "label.language": "\u8bed\u8a00",
@@ -124,6 +127,18 @@ export default function SiteHeader({ navigation, home = false, currentPath = "/"
     window.location.assign(target);
   };
 
+  const clearSearch = () => {
+    setSearchValue("");
+
+    if (window.location.pathname === "/") {
+      window.history.pushState({}, "", "/#latest");
+      document.dispatchEvent(new CustomEvent("site-search-query", { detail: { query: "" } }));
+      return;
+    }
+
+    window.location.assign("/#latest");
+  };
+
   return (
     <header className={`antd-site-header ${home ? "home" : "compact"}`}>
       <div className="antd-header-inner">
@@ -198,6 +213,13 @@ export default function SiteHeader({ navigation, home = false, currentPath = "/"
             onChange={(event) => setSearchValue(event.target.value)}
             onSearch={runSearch}
             aria-label={t("button.search", "Search")}
+          />
+          <Button
+            className="antd-search-clear"
+            icon={<CloseCircleOutlined />}
+            aria-label={t("button.clearSearch", "Clear search")}
+            disabled={!searchValue}
+            onClick={clearSearch}
           />
         </Space>
       </div>
